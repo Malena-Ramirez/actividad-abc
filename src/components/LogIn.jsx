@@ -2,9 +2,9 @@ import React from 'react';
 import { Form, Button, Container } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 import { useForm } from '../hooks/useForm';
-import { login } from '../actions/action';
+import { login, loginGoogle } from '../actions/action';
 
-const LogIn = () => {
+const Login = () => {
   const dispatch = useDispatch();
   const [formValues, handleInputChange] = useForm({
     email: '',
@@ -13,14 +13,18 @@ const LogIn = () => {
 
   const { email, password } = formValues;
 
-  const handleLogIn = (e) => {
+  const handleLogin = (e) => {
     e.preventDefault();
     dispatch(login(email, password));
   };
 
+  const handleLoginGoogle = () => {
+    dispatch(loginGoogle());
+  };
+
   return (
     <Container>
-      <Form onSubmit={handleLogIn}>
+      <Form onSubmit={handleLogin}>
         <Form.Group className='mb-3' controlId='formBasicEmail'>
           <Form.Label>Correo electrónico</Form.Label>
           <Form.Control
@@ -48,7 +52,7 @@ const LogIn = () => {
           </Button>
         </div>
         <Container className='auth__social-networks'>
-          <Container className='google-btn'>
+          <Container className='google-btn' onClick={handleLoginGoogle}>
             <Container className='google-icon-wrapper'>
               <img
                 className='google-icon'
@@ -63,4 +67,4 @@ const LogIn = () => {
   );
 };
 
-export default LogIn;
+export default Login;

@@ -24,6 +24,7 @@ const Signup = () => {
 
   return (
     <Container>
+      <h1 className='mt-5 text-center'>Registrarse</h1>
       <Form onSubmit={handleSignup}>
         <Form.Group className='mb-3' controlId='formBasicName'>
           <Form.Label>Nombre</Form.Label>

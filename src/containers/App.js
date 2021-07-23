@@ -1,12 +1,12 @@
 import React from 'react';
 import Products from '../components/Products';
-import LogIn from '../components/LogIn';
+import Login from '../components/Login';
 
 function App() {
   return (
     <div className="App">
       <Products />
-      <LogIn />
+      <Login />
     </div>
   );
 }

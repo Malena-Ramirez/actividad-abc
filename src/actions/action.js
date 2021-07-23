@@ -1,5 +1,5 @@
 import { types } from "../types/types";
-import { google, firebase } from "../firebase/firebaseconfig";
+import { google, firebase, db } from "../firebase/firebaseconfig";
 
 export const login = (id, displayName) => {
   return {
@@ -50,5 +50,53 @@ export const loginEmailPassword = (email, password) => {
       .catch(
         e => console.log(e)
       )
+  }
+}
+
+export const register = (id, name, quantity, price) => {
+  return {
+    type: types.register,
+    payload: {
+      id,
+      name,
+      quantity,
+      price
+    }
+  }
+}
+
+export const productRegister = (id, name, quantity, price) => {
+  return async (dispatch) => {
+    const newProduct = {
+      id,
+      name,
+      quantity,
+      price
+    }
+    await db.collection('/Products').add(newProduct);
+    dispatch(register(id, name, quantity, price))
+  }
+}
+
+export const list = (product) => {
+  return {
+    type: types.list,
+    payload: product
+  }
+}
+
+export const productList = () => {
+  return async (dispatch) => {
+    const data = await db.collection('/Products').get();
+    const product = [];
+
+    data.forEach(element => {
+      product.push({
+        ...element.data()
+      })
+    })
+
+    console.log(product);
+    dispatch(list(product));
   }
 }

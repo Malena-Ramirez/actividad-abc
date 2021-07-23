@@ -5,13 +5,15 @@ const productsReducer = (state = [], action) => {
     case types.register:
       return {
         id: action.payload.id,
-        name: action.payload.displayName
+        name: action.payload.name,
+        quantity: action.payload.quantity,
+        price: action.payload.price
       };
-
     case types.list:
-
-      return {};
-
+      return {
+        ...state,
+        product: [...action.payload]
+      };
     default:
       return state;
   }

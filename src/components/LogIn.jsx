@@ -2,7 +2,7 @@ import React from 'react';
 import { Form, Button, Container } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 import { useForm } from '../hooks/useForm';
-import { login, loginGoogle } from '../actions/action';
+import { loginGoogle, loginEmailPassword } from '../actions/action';
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -15,7 +15,7 @@ const Login = () => {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    dispatch(login(email, password));
+    dispatch(loginEmailPassword(email, password));
   };
 
   const handleLoginGoogle = () => {

@@ -22,3 +22,33 @@ export const loginGoogle = () => {
       })
   }
 }
+
+export const singupEmailPasswordName = (email, password, name) => {
+  return (dispatch) => {
+    firebase.auth().createUserWithEmailAndPassword(email, password)
+      .then(async ({ user }) => {
+        console.log(user);
+        await user.updateProfile({ displayName: name })
+        dispatch(
+          login(user.uid, user.displayName)
+        )
+      })
+      .catch(
+        e => console.log(e)
+      )
+  }
+}
+
+export const loginEmailPassword = (email, password) => {
+  return (dispatch) => {
+    firebase.auth().signInWithEmailAndPassword(email, password)
+      .then(({ user }) => {
+        dispatch(
+          login(user.uid, user.displayName)
+        )
+      })
+      .catch(
+        e => console.log(e)
+      )
+  }
+}

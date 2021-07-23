@@ -68,10 +68,11 @@ const Signup = () => {
             onChange={handleInputChange}
           />
         </Form.Group>
-
-        <Button variant='info' type='submit'>
-          Registrarse
-        </Button>
+        <div className='d-flex justify-content-center'>
+          <Button size='lg' variant='info' type='submit'>
+            Registrarse
+          </Button>
+        </div>
       </Form>
     </Container>
   );

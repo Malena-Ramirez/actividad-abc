@@ -15,7 +15,6 @@ export const loginGoogle = () => {
   return (dispatch) => {
     firebase.auth().signInWithPopup(google)
       .then(({ user }) => {
-        console.log(user);
         dispatch(
           login(user.uid, user.displayName)
         )
@@ -27,7 +26,6 @@ export const singupEmailPasswordName = (email, password, name) => {
   return (dispatch) => {
     firebase.auth().createUserWithEmailAndPassword(email, password)
       .then(async ({ user }) => {
-        console.log(user);
         await user.updateProfile({ displayName: name })
         dispatch(
           login(user.uid, user.displayName)
@@ -95,8 +93,6 @@ export const productList = () => {
         ...element.data()
       })
     })
-
-    console.log(product);
     dispatch(list(product));
   }
 }

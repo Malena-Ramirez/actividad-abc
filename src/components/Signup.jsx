@@ -18,7 +18,6 @@ const Signup = () => {
 
   const handleSignup = (e) => {
     e.preventDefault();
-    console.log(name, pass1, email);
     dispatch(singupEmailPasswordName(email, pass1, name));
   };
 

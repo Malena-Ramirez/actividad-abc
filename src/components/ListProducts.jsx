@@ -4,7 +4,6 @@ import { useSelector } from 'react-redux';
 
 const ListProducts = () => {
   const { product } = useSelector((store) => store.products);
-  console.log(product);
   return (
     <Table striped bordered hover>
       <thead className='text-center'>
@@ -16,7 +15,7 @@ const ListProducts = () => {
         </tr>
       </thead>
       <tbody>
-        {product ? (
+        {product &&
           product.map((element) => (
             <tr key={element.id}>
               <td>{element.id}</td>
@@ -24,10 +23,7 @@ const ListProducts = () => {
               <td>{element.quantity}</td>
               <td>{element.price}</td>
             </tr>
-          ))
-        ) : (
-          <p>No hay datos disponibles</p>
-        )}
+          ))}
       </tbody>
     </Table>
   );

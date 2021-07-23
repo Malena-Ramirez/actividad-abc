@@ -7,13 +7,12 @@ const ListProducts = () => {
   console.log(product);
   return (
     <Table striped bordered hover>
-      <thead>
+      <thead className='text-center'>
         <tr>
           <th>Id</th>
           <th>Producto</th>
           <th>Cantidad</th>
           <th>Precio unitario</th>
-          <th>Acciones</th>
         </tr>
       </thead>
       <tbody>

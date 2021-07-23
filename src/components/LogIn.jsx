@@ -27,7 +27,7 @@ const Login = () => {
   return (
     <>
       <Container className='px-5'>
-        <h1 className='mt-5 text-center'>Iniciar sesión</h1>
+        <h2 className='mt-5 text-center'>Iniciar sesión</h2>
         <Form className='px-5' onSubmit={handleLogin}>
           <Form.Group className='mb-3' controlId='formBasicEmail'>
             <Form.Label>Correo electrónico</Form.Label>
@@ -55,9 +55,13 @@ const Login = () => {
               Iniciar Sesión
             </Button>
           </div>
-          <Container className='auth__social-networks'>
-            <Container className='google-btn' onClick={handleLoginGoogle}>
-              <Container className='google-icon-wrapper'>
+
+          <Container className='auth__social-networks d-flex justify-content-center mt-3'>
+            <Container
+              className='google-btn d-flex justify-content-center'
+              onClick={handleLoginGoogle}
+            >
+              <Container className='google-icon-wrapper d-flex justify-content-center'>
                 <img
                   className='google-icon'
                   src='https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg'
@@ -66,7 +70,8 @@ const Login = () => {
               </Container>
             </Container>
           </Container>
-          <div className='tex-center mt-3'>
+
+          <div className='mt-3 d-flex justify-content-center'>
             <Link
               className='text-dark'
               to='/registro'
@@ -75,6 +80,7 @@ const Login = () => {
               Registrarse
             </Link>
           </div>
+          <hr />
         </Form>
       </Container>
       <Products />
